@@ -12,7 +12,7 @@ const creditSchema = new mongoose.Schema(
 
     balance: {
       type: Number,
-      default: 0,
+      default: 100,
       min: 0,
     },
 
@@ -47,6 +47,11 @@ const creditSchema = new mongoose.Schema(
       default: 0,
     },
 
+       lastMonthlyReset: {
+      type: Date,
+      default: null,
+    },
+
     subscriptionExpiresAt: {
       type: Date,
       default: null,
@@ -56,6 +61,38 @@ const creditSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+     subscriptionStatus: {
+      type: String,
+      enum: ["active", "expired", "canceled", "trialing"],
+      default: null,
+    },
+     stripeSubscriptionId: {
+      type: String,
+      default: null,
+      sparse: true, 
+    },
+
+     stripeCustomerId: {
+      type: String,
+      default: null,
+      sparse: true,
+    },
+     totalCreditsUsed: {
+      type: Number,
+      default: 0,
+      min: 0,
+    },
+       totalGenerations: {
+      type: Number,
+      default: 0,
+      min: 0,
+    },
+      bonusCredits: {
+      type: Number,
+      default: 0,
+      min: 0,
+    },
+
   },
   { timestamps: true }
 );
