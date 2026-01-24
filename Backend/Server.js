@@ -3,7 +3,8 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 4599;
 const cors = require('cors');
-const FrontendRoutes = require('../Backend/Routes/FrontendRoutes');
+const FrontendRoutes = require('./Routes/Frontend.routes.js');
+require('./utils/cronjobs.js'); 
 
 app.use(cors({
     origin: 'http://localhost:5173',
@@ -12,7 +13,7 @@ app.use(cors({
 }))
 
 app.get('/', (req, res) => {
-    res.send('Hello, World!');
+    res.send('Hello, World');
 })
 
 app.use(express.static('public'));

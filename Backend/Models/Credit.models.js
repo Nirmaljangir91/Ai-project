@@ -18,7 +18,7 @@ const creditSchema = new mongoose.Schema(
 
     plan: {
       type: String,
-      enum: ["free", "daily", "monthly", "lifetime"],
+      enum: ["free", "daily", "monthly"],
       default: "free",
     },
 
@@ -47,7 +47,7 @@ const creditSchema = new mongoose.Schema(
       default: 0,
     },
 
-       lastMonthlyReset: {
+    lastMonthlyReset: {
       type: Date,
       default: null,
     },
@@ -82,7 +82,7 @@ const creditSchema = new mongoose.Schema(
       default: 0,
       min: 0,
     },
-       totalGenerations: {
+     totalGenerations: {
       type: Number,
       default: 0,
       min: 0,
