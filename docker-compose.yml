@@ -1,0 +1,23 @@
+services:
+  backend:
+    image: ai-backend-app
+    container_name: ai-backend
+    env_file:
+      - ./Server/.env.docker
+    ports:
+      - "31100:5000"
+    networks:
+      - ai-mern-net
+
+  frontend:
+    image: ai-frontend-app
+    container_name: ai-frontend
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+    networks:
+      - ai-mern-net
+networks:
+  ai-mern-net:
+    driver: bridge
